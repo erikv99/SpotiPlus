@@ -1,0 +1,143 @@
+<Popups>:
+	title: "Alert"
+
+	Label: 
+		id: pu
+		text: ""
+		size_hint: None, None
+		size: self.texture_size
+		text_size: 300, 100
+		halign: 'center'
+		valign: 'middle'
+	
+ScreenManager:
+	HomeWindow:
+		name: "home"
+	SettingsWindow:
+		name: "settings"
+
+<HomeWindow>:
+	name: "home"
+	BoxLayout:
+		orientation: "vertical"
+		padding: [10]
+		spacing: 10
+
+		Label: 
+			bold: True
+			text: "SpotiPlus"
+			font_size: 50	
+			size_hint_y: None
+			height: 70
+			text_size: self.size
+			valign: "bottom"
+			halign: "center"
+
+		Label:
+			text: "Selected Playlist:"
+			bold: True
+			font_size: 24
+			size_hint_y: None
+			text_size: self.width, self.height
+			height: 30
+			valign: "center"
+			halign: "center"
+
+		Label:
+			id: selectedPlaylist
+			text: ""
+			size_hint_y: None
+			font_size: 20
+			height: 25
+			text_size: self.width, self.height
+			valign: "top"
+			halign: "center"
+
+		Button:
+			text: "Add current song to playlist"
+			font_size: 20
+			bold: True
+			size_hint_y: None
+			height: 80
+			valign: "center"
+			halign: "center"
+			on_release: app.addCurrentSongToPlaylist()
+
+		Button: 
+			text: "Settings"
+			font_size: 22
+			bold: True
+			size_hint_y: None
+			height: 40
+			valign: "center"
+			halign: "center"
+			on_release: 
+				app.root.current = "settings"
+
+<SettingsWindow>:
+	name: "settings"
+
+	BoxLayout:
+		orientation: "vertical"
+		padding: [10]
+		spacing: 10
+
+		Label: 
+			bold: True
+			text: "SpotiPlus"
+			font_size: 50	
+			size_hint_y: None
+			height: 70
+			text_size: self.size
+			valign: "bottom"
+			halign: "center"
+
+		Label:
+			text: "Selected Playlist:"
+			bold: True
+			font_size: 24
+			size_hint_y: None
+			text_size: self.width, self.height
+			height: 30
+			valign: "center"
+			halign: "center"
+
+		Label:
+			id: selectedPlaylist
+			text: ""
+			size_hint_y: None
+			font_size: 20
+			height: 25
+			text_size: self.width, self.height
+			valign: "top"
+			halign: "center"
+
+		TextInput:
+			id: uInput
+			multiline: False
+			hint_text: "Playlist ID"
+			size_hint_y: None
+			height: 35
+			text_size: self.width, self.height
+
+		Button: 
+			text: "Change Playlist"
+			font_size: 20
+			bold: True
+			size_hint_y: None
+			height: 35
+			valign: "center"
+			halign: "center"
+			on_release: 
+				app.setSelectedPlaylist()
+
+		Button: 
+			text: "Home"
+			font_size: 22
+			bold: True
+			size_hint_y: None
+			height: 40
+			valign: "center"
+			halign: "center"
+			on_release: 
+				app.root.current = "home"
